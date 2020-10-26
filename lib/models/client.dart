@@ -1,12 +1,12 @@
 import 'dart:ffi';
 
 class Client {
-  final String id;
+  final int id;
   final int number;
   final String type;
-  final Float core;
-  final Float premium;
-  final Float total;
+  final double core;
+  final double premium;
+  final double total;
   final String createdOn;
 
   Client({this.id, this.number, this.type, this.core, this.premium, this.total,
@@ -17,15 +17,24 @@ class Client {
       id: json['id'],
       number: json['number'],
       type: json['type'],
-      core: json['core'],
-      premium: json['premium'],
-      total: json['total'],
+      core: double.parse(json['core']),
+      premium: double.parse(json['premium']),
+      total: double.parse(json['total']),
       createdOn: json['created_on']
     );
   }
 
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'number': number,
+    'type': type,
+    'core': core,
+    'premium': premium,
+    'total': total
+  };
+
   @override
   String toString() {
-    return "$id | $number | $type | $core";
+    return "$type | $number | $core";
   }
 }

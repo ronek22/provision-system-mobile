@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provision_system/models/chuck_clients.dart';
 import 'package:provision_system/models/client.dart';
 import 'package:provision_system/providers/ClientProvider.dart';
 import 'package:provision_system/utils/commons.dart';
@@ -11,11 +12,11 @@ class GetClients extends StatefulWidget {
 }
 
 class _GetClientsState extends State<GetClients> {
-  List<Client> clients;
+  ChuckClients clients;
 
   @override
   void initState() {
-    clients = Provider.of<ClientProvider>(context, listen: false).clients;
+    clients = Provider.of<ClientProvider>(context, listen: false).chuckClients;
     super.initState();
   }
 
@@ -50,7 +51,7 @@ class _GetClientsState extends State<GetClients> {
 }
 
 class ClientList extends StatelessWidget {
-  final List<Client> clientList;
+  final ChuckClients clientList;
 
   const ClientList({Key key, this.clientList}) : super(key: key);
 
@@ -77,7 +78,7 @@ class ClientList extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(4,0,0,0),
                   child: Text(
-                    clientList[index].type,
+                    clientList.clients[index].toString(),
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
@@ -90,7 +91,7 @@ class ClientList extends StatelessWidget {
             ),
           );
         },
-        itemCount: clientList.length,
+        itemCount: clientList.clients.length,
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
       ),

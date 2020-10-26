@@ -6,20 +6,21 @@ class User {
   final String firstName;
   final String lastName;
   final bool isActive;
-  final String accessToken;
+  String accessToken;
   String refreshToken;
 
   User({this.id, this.username, this.email, this.firstName, this.lastName, this.isActive, this.accessToken, this.refreshToken});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['user']['id'],
-      username: json['user']['username'],
-      email: json['user']['email'],
-      firstName: json['user']['first_name'],
-      lastName: json['user']['last_name'],
-      isActive: json['user']['is_active'],
-      accessToken: json['access_token']
+      id: json['id'],
+      username: json['username'],
+      email: json['email'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
+      isActive: json['is_active'],
+      accessToken: json['access_token'],
+      refreshToken: json['refresh_token']
     );
   }
 

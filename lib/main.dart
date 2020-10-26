@@ -83,11 +83,7 @@ class SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Color(0xFFFFFFFF),
       body: Center(
-        child: Image.asset(
-          'assets/images/flutter.png',
-          width: 250,
-          height: 250,
-        ),
+
       ),
     );
   }

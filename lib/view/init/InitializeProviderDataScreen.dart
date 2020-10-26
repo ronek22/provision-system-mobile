@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provision_system/models/chuck_clients.dart';
 import 'package:provision_system/models/client.dart';
 import 'package:provision_system/providers/ClientProvider.dart';
 import 'package:provision_system/utils/commons.dart';
@@ -19,8 +20,9 @@ class InitializeProvidersState extends State<InitializeProviderDataScreen> {
 
 
   Widget _loadClients() {
-    return FutureBuilder<List<Client>>(
+    return FutureBuilder<ChuckClients>(
       future: Provider.of<ClientProvider>(context, listen: false).fetchClientList(),
+      // TODO: NEED TO CHECK HOW FUTURE BUILDER WORKS
       builder: (context, snapshot) {
         switch(snapshot.connectionState) {
           case ConnectionState.none:

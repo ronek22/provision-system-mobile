@@ -6,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:provision_system/models/user.dart';
 import 'package:provision_system/providers/AuthProvider.dart';
+import 'package:provision_system/providers/ClientProvider.dart';
 import 'package:provision_system/utils/commons.dart';
 import 'package:provision_system/view/init/InitializeProviderDataScreen.dart';
 
@@ -149,6 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final storage = FlutterSecureStorage();
     storage.write(key: 'user', value: jsonEncode(user));
     storage.write(key: "loginstatus", value: "loggedin");
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
